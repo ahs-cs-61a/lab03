@@ -1,24 +1,24 @@
-# lab02
+# lab03
   
-this assignment will be on higher order functions (HOFs) and environments
+this assignment will be on tree recursion and recursion
   
-this assignment merges problems from lab01, disc01, and hw01 into one; refer to these links for problem descriptions and requirements:
+this assignment merges problems from lab03, disc03, and hw03 into one; refer to these links for problem descriptions and requirements:
   
-- lab02: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab02/
-- disc02: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc02/
-- hw02: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw02/
+- lab02: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab03/
+- disc02: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc03/
+- hw02: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw03/
   
 environment diagrams practice problems: https://docs.google.com/document/d/1ybST4lznR4nkOhE75sRp7hI3YPmnDTAWe_RK_8fMmaw/edit?usp=sharing
   
 lecture slides: 
   
-- HOFs slides: https://docs.google.com/presentation/d/1W7UIXSLwsW19D7uuh_PYTCV9wYaBjhwSEK1fCLPANvI/edit?usp=sharing
-- environment slides: https://docs.google.com/presentation/d/1uJnjgKIXZn6rCuZlm73VBJLWc8laU6ZijMST2grMh1I/edit?usp=sharing
+- recursion slides: https://inst.eecs.berkeley.edu/~cs61a/su22/assets/slides/06-Recursion.pdf
+- tree recursion slides: https://docs.google.com/presentation/d/1gsCTdvvPdnZhKFMdh_UDLqtv3EWx7IhJ_laOHoNgqu4/edit?usp=sharing
   
 optional lecture recordings:
   
-- HOFs: https://youtube.com/playlist?list=PLx38hZJ5RLZeBqIUj6ud1Ly-41dpqKX-L
-- environments: https://www.youtube.com/playlist?list=PLx38hZJ5RLZc-ttMv-Gti0T9G80n4rfdF
+- recursion: https://www.youtube.com/playlist?list=PLx38hZJ5RLZccPtgCs_3bMzWjtERl2hom
+- tree recursion: https://www.youtube.com/watch?v=VYYkJ1OLXBw&list=PLx38hZJ5RLZepeKXgbKhECuNBWJFp_LnO&index=1
   
 reminders:
   
