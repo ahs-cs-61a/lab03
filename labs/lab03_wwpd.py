@@ -22,31 +22,108 @@ def outro():
 
 # reference functions
 
-def virfib_sq(n):
+def virfib_sq(n): # with print
     print(n)
     if n <= 1:
         return n
     return (virfib_sq(n - 1) + virfib_sq(n - 2)) ** 2
 
+def virfib_sq2(n): # without print, used to check answers  
+    if n <= 1:
+        return n
+    return (virfib_sq2(n - 1) + virfib_sq2(n - 2)) ** 2
 
 # wwpd_functions
 
-def virfib_wwwpd(): # wwpd_virfib
+def virfib_sq_wwpd(): # wwpd_virfib
     intro()
 
-    print(inspect.getsource(virfib))
+    print(inspect.getsource(virfib_sq))
 
     print(">>> r0 = virfib_sq(0)")
     x = input()
-    if x != str(virfib_sq(0)):
+    while x != "0":
         x = repeat()
 
+    
     print(">>> r1 = virfib_sq(1)")
     x = input()
-    if x != str(virfib_sq(1)):
+    while x != "1":
         x = repeat()
+
 
     print(">>> r2 = virfib_sq(2)")
     x = input()
-    if x != str(virfib_sq(2)):
+    while x != "2":
         x = repeat()
+    x = input()
+    while x != "1":
+        x = repeat()
+    x = input()
+    while x != "0":
+        x = repeat()
+
+
+    print(">>> r3 = virfib_sq(3)")
+    x = input()
+    while x != "3":
+        x = repeat()
+    x = input()
+    while x != "2":
+        x = repeat()
+    x = input()
+    while x != "1":
+        x = repeat()
+    x = input()
+    while x != "0":
+        x = repeat()
+    x = input()
+    while x != "1":
+        x = repeat()
+
+
+    print(">>> r3")
+    x = input()
+    while x != str(virfib_sq2(3)):
+        x = repeat()
+
+    print(">>> (r1 + r2) ** 2")
+    x = input()
+    while x != str((virfib_sq2(1) + virfib_sq2(2)) ** 2):
+        x = repeat()
+    
+    print(">>> r4 = virfib_sq(4)")
+    x = input()
+    while x != "4":
+        x = repeat()
+    x = input()
+    while x != "3":
+        x = repeat()
+    x = input()
+    while x != "2":
+        x = repeat()
+    x = input()
+    while x != "1":
+        x = repeat()
+    x = input()
+    while x != "0":
+        x = repeat()
+    x = input()
+    while x != "1":
+        x = repeat()
+    x = input()
+    while x != "2":
+        x = repeat()
+    x = input()
+    while x != "1":
+        x = repeat()
+    x = input()
+    while x != "0": 
+        x = repeat()
+
+    print(">>> r4")
+    x = input()
+    while x != str(virfib_sq2(4)):
+        x = repeat()
+    
+    outro()
