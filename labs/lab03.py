@@ -1,4 +1,4 @@
-# lab03
+# lab03 - recursion & tree recursion
 
 
 # disc03: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc03/
@@ -71,7 +71,7 @@ def summation(n, term): # q5
     >>> summation(5, lambda x: 2**x) # 2^1 + 2^2 + 2^3 + 2^4 + 2^5
     62
     """
-    assert n >= 1
+    assert n >= 1 # checks that n is not < 1
     "*** YOUR CODE HERE ***"
 
  
@@ -91,10 +91,45 @@ def paths(m, n): # q6
     "*** YOUR CODE HERE ***"
 
 
+def pascal(row, column): # q7
+    """Returns the value of the item in Pascal's Triangle
+    whose position is specified by row and column.
+    >>> pascal(0, 0)    # The top left (the point of the triangle)
+    1
+    >>> pascal(0, 5)	# Empty entry; outside of Pascal's Triangle
+    0
+    >>> pascal(3, 2)	# Row 3 (1 3 3 1), Column 2
+    3
+    >>> pascal(4, 2)     # Row 4 (1 4 6 4 1), Column 2
+    6
+    """
+    "*** YOUR CODE HERE ***"
+
+
+def double_eights(n): # q8
+    """ Returns whether or not n has two digits in row that
+    are the number 8. Assume n has at least two digits in it.
+
+    >>> double_eights(1288)
+    True
+    >>> double_eights(880)
+    True
+    >>> double_eights(538835)
+    True
+    >>> double_eights(284682)
+    False
+    >>> double_eights(588138)
+    True
+    >>> double_eights(78)
+    False
+    """
+    "*** YOUR CODE HERE ***"
+
+
 # hw03: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw03/
 
 
-def num_eights(pos): # q7
+def num_eights(pos): # q9
     """Returns the number of times 8 appears as a digit of pos.
 
     >>> num_eights(3)
@@ -113,7 +148,7 @@ def num_eights(pos): # q7
     "*** YOUR CODE HERE ***"
 
 
-def pingpong(n): # q8, DO NOT use variable assignment/reassignment statements
+def pingpong(n): # q10, DO NOT use variable assignment/reassignment statements
     """Return the nth element of the ping-pong sequence.
 
     >>> pingpong(8)
@@ -144,7 +179,7 @@ def pingpong(n): # q8, DO NOT use variable assignment/reassignment statements
     "*** YOUR CODE HERE ***"
 
 
-def get_larger_coin(coin): # don't edit function
+def get_larger_coin(coin): # don't edit function, used in count_coins
     """Returns the next larger coin in order.
     >>> get_larger_coin(1)
     5
@@ -161,7 +196,7 @@ def get_larger_coin(coin): # don't edit function
     elif coin == 10:
         return 25
 
-def get_smaller_coin(coin): # don't edit function
+def get_smaller_coin(coin): # don't edit function, used in count_coins
     """Returns the next smaller coin in order.
     >>> get_smaller_coin(25)
     10
@@ -178,7 +213,7 @@ def get_smaller_coin(coin): # don't edit function
     elif coin == 5:
         return 1
 
-def count_coins(change): # q9, use get_smaller_coin or get_larger_coin
+def count_coins(change): # q11, use get_smaller_coin or get_larger_coin
     """Return the number of ways to make change using coins of value of 1, 5, 10, 25.
     >>> count_coins(15)
     6
