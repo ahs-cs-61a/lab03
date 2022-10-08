@@ -4,4 +4,4 @@ from labs.lab03_wwpd import *
 # WWPD? questions:  
 # un-comment one-by-one and complete question set
 
-# wwwpd_virfib_sq_wwpd
+# wwpd_virfib_sq()

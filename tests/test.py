@@ -1,14 +1,18 @@
 # lab03 tests
 
-
 import labs.lab03 as lab
 import re
 
+
 # converting lab file into string
-text_file = open("/home/runner/lab03-Robertian23/labs/lab03.py", "r")
+def get_user():
+  user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
+  return user
+
+path = "/home/runner/lab03-" + get_user() + "/labs/lab03.py"
+text_file = open(path, "r")
 data = text_file.read()
 text_file.close()
-print(data)
 
 
 def test_ban_iteration():
