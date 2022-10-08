@@ -4,9 +4,9 @@ this assignment will be on tree recursion and recursion
   
 this assignment merges problems from lab03, disc03, and hw03 into one; refer to these links for problem descriptions and requirements:
   
-- lab02: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab03/
-- disc02: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc03/
-- hw02: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw03/
+- lab03: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab03/
+- disc03: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc03/
+- hw03: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw03/
   
 environment diagrams practice problems: https://docs.google.com/document/d/1ybST4lznR4nkOhE75sRp7hI3YPmnDTAWe_RK_8fMmaw/edit?usp=sharing
   
@@ -25,8 +25,8 @@ reminders:
 - to install pytest: ```python3 -m pip install pytest```
 - to import files and packages: ```python3 -m pip install -e .```
 - to run main.py: ```python3 main.py```
-- for individual tests: ```python3 -m pytest tests/test.py -k test_name_of_function```
-- for all tests: ```python3 -m pytest tests/test.py```
+- for individual tests: ```python3 -m pytest -s tests/test.py -k test_name_of_function```
+- for all tests: ```python3 -m pytest -s tests/test.py```
 - use [Python Tutor](https://pythontutor.com/composingprograms.html#mode=display) if you are having trouble drawing/figuring out the environment diagrams
 - refer to lab00 setup description for help
 - don't forget to push to GitHub and submit turn-in in GradeScope
