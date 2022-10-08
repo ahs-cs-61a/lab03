@@ -1,4 +1,5 @@
 # lab03 - recursion & tree recursion
+# DO NOT use iteration in solutions
 
 
 # disc03: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc03/
@@ -225,9 +226,5 @@ def count_coins(change): # q11, use get_smaller_coin or get_larger_coin
     242
     >>> count_coins(200)
     1463
-    >>> from construct_check import check
-    >>> # ban iteration
-    >>> check(HW_SOURCE_FILE, 'count_coins', ['While', 'For'])
-    True
     """
     "*** YOUR CODE HERE ***"

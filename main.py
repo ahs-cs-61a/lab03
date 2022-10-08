@@ -1,8 +1,7 @@
-from labs.lab02 import *
-from labs.lab02_wwpd import *
+from labs.lab03 import *
+from labs.lab03_wwpd import *
 
 # WWPD? questions:  
 # un-comment one-by-one and complete question set
 
-# wwpd_lambdas()
-# wwpd_hofs()
+# wwwpd_virfib_sq_wwpd
