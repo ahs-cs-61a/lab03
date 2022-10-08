@@ -4,20 +4,15 @@ import labs.lab03 as lab
 import re
 
 
-# converting lab file into string
-def get_user():
-  user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
-  return user
-
-path = "/home/runner/lab03-" + get_user() + "/labs/lab03.py"
-text_file = open(path, "r")
-data = text_file.read()
-text_file.close()
-
-
 def test_ban_iteration():
-  search = re.search(r"(while|for).*:{1}", data)
-  assert search is None
+    user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
+    path = "/home/runner/lab03-" + user + "/labs/lab03.py"
+    text_file = open(path, "r")
+    data = text_file.read()
+    text_file.close()
+    search = re.search(r"(while|for).*:{1}", data)
+
+    assert search is None
 
 
 def test_multiply():
@@ -33,6 +28,7 @@ def test_is_prime():
 
 
 def test_hailstone():
+    print("\nhailstone prints:")
     assert lab.hailstone(10) == 7
     assert lab.hailstone(1) == 1
 
