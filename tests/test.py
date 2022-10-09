@@ -5,7 +5,8 @@ import re
 
 
 def test_ban_iteration():
-    path = "/workspaces/lab03/labs/lab03.py"
+    user = input("\nWhat is your GitHub username (exact match, case sensitive)?\n")
+    path = "/workspaces/lab03-" + user + "/labs/lab03.py"
     text_file = open(path, "r")
     data = text_file.read()
     text_file.close()
