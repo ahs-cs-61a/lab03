@@ -33,7 +33,8 @@ def virfib_sq2(n): # without print, used to check answers
         return n
     return (virfib_sq2(n - 1) + virfib_sq2(n - 2)) ** 2
 
-# wwpd_functions
+
+# wwpd questions
 
 def virfib_sq_wwpd(): # wwpd_virfib
     intro()
@@ -87,11 +88,13 @@ def virfib_sq_wwpd(): # wwpd_virfib
     while x != str(virfib_sq2(3)):
         x = repeat()
 
+
     print(">>> (r1 + r2) ** 2")
     x = input()
     while x != str((virfib_sq2(1) + virfib_sq2(2)) ** 2):
         x = repeat()
     
+
     print(">>> r4 = virfib_sq(4)")
     x = input()
     while x != "4":
@@ -120,6 +123,7 @@ def virfib_sq_wwpd(): # wwpd_virfib
     x = input()
     while x != "0": 
         x = repeat()
+
 
     print(">>> r4")
     x = input()
