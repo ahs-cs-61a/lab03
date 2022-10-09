@@ -1,6 +1,6 @@
 # lab03
   
-this assignment will be on tree recursion and recursion
+this assignment will be on recursion and tree recursion
   
 this assignment merges problems from lab03, disc03, and hw03 into one; refer to these links for problem descriptions and requirements:
   
