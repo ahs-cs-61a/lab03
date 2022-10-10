@@ -22,7 +22,8 @@ def outro():
 
 # reference functions
 
-def virfib_sq(n): # with print
+# with print
+def virfib_sq(n):
     print(n)
     if n <= 1:
         return n

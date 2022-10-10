@@ -36,7 +36,7 @@ def test_is_prime():
 
 
 def test_hailstone():
-    print("\nhailstone prints:")
+    print("\n\nhailstone prints:")
     assert lab.hailstone(10) == 7
     assert lab.hailstone(1) == 1
 
