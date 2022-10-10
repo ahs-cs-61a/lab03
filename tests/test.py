@@ -15,9 +15,8 @@ class Capturing(list):
         return self
     def __exit__(self, *args):
         self.extend(self._stringio.getvalue().splitlines())
-        del self._stringio    # free up some memory
+        del self._stringio
         sys.stdout = self._stdout
-
 
 
 def test_ban_iteration():
@@ -56,8 +55,13 @@ def test_hailstone():
         lab.hailstone(10)
     hailstone_10 = ['10', '5', '16', '8', '4', '2', '1']
     for i in range(len(hailstone_10)):
-        assert hailstone_10[i] == hailstone_10_output[i]
+        assert hailstone_10[i] == hailstone_10_output[i] # incorrect prints
 
+    with Capturing() as hailstone_1_output:
+        lab.hailstone(1)
+    hailstone_1 = ['1']
+    for i in range(len(hailstone_1)):
+        assert hailstone_1[i] == hailstone_1_output[i] # incorrect prints
     assert lab.hailstone(1) == 1
 
 
