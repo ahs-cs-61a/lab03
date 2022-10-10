@@ -36,7 +36,7 @@ def virfib_sq2(n): # without print, used to check answers
 
 # wwpd questions
 
-def virfib_sq_wwpd(): # wwpd_virfib
+def wwpd_virfib_sq(): # wwpd_virfib
     intro()
 
     print(inspect.getsource(virfib_sq))

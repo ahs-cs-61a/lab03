@@ -2,17 +2,25 @@
 
 import labs.lab03 as lab
 import re
+import inspect
+
+
+user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
+path = "/workspaces/lab03-" + user + "/labs/lab03.py"
+text_file = open(path, "r")
+data = text_file.read()
+text_file.close()
 
 
 def test_ban_iteration():
-    user = input("\nWhat is your GitHub username (exact match, case sensitive)?\n")
-    path = "/workspaces/lab03-" + user + "/labs/lab03.py"
-    text_file = open(path, "r")
-    data = text_file.read()
-    text_file.close()
     search = re.search(r"(while|for).*:{1}", data)
-
     assert search is None
+
+
+def test_ban_assignments():
+    function = inspect.getsource(lab.pingpong)
+    search = re.search(r"[^=]={1}[^=]", function)
+    assert search is None # assignment statement(s) detected in pingpong, please implement without
 
 
 def test_multiply():
