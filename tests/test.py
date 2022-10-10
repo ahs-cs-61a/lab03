@@ -3,18 +3,32 @@
 import labs.lab03 as lab
 import re
 import inspect
+from io import StringIO 
+import sys
 
 
-user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
-path = "/workspaces/lab03-" + user + "/labs/lab03.py"
-text_file = open(path, "r")
-data = text_file.read()
-text_file.close()
+# capturing prints (stdout)
+class Capturing(list):
+    def __enter__(self):
+        self._stdout = sys.stdout
+        sys.stdout = self._stringio = StringIO()
+        return self
+    def __exit__(self, *args):
+        self.extend(self._stringio.getvalue().splitlines())
+        del self._stringio    # free up some memory
+        sys.stdout = self._stdout
+
 
 
 def test_ban_iteration():
+    # converting lab file into string
+    user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
+    path = "/workspaces/lab03-" + user + "/labs/lab03.py"
+    text_file = open(path, "r")
+    data = text_file.read()
+    text_file.close()
     search = re.search(r"(while|for).*:{1}", data)
-    assert search is None
+    assert search is None # iteration detected, please implement using recursion
 
 
 def test_ban_assignments():
@@ -38,6 +52,12 @@ def test_is_prime():
 def test_hailstone():
     print("\n\nhailstone prints:")
     assert lab.hailstone(10) == 7
+    with Capturing() as hailstone_10_output:
+        lab.hailstone(10)
+    hailstone_10 = ['10', '5', '16', '8', '4', '2', '1']
+    for i in range(len(hailstone_10)):
+        assert hailstone_10[i] == hailstone_10_output[i]
+
     assert lab.hailstone(1) == 1
 
 
