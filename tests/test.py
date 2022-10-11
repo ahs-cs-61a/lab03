@@ -49,7 +49,7 @@ def test_is_prime():
 
 
 def test_hailstone():
-    print("\n\nhailstone prints:")
+    print("\n\nhailstone(10) prints:")
     with Capturing() as hailstone_10_output:
         lab.hailstone(10)
     hailstone_10 = ['10', '5', '16', '8', '4', '2', '1']
@@ -57,6 +57,7 @@ def test_hailstone():
         assert hailstone_10[i] == hailstone_10_output[i] # incorrect prints
     assert lab.hailstone(10) == 7
 
+    print("\n\nhailstone(1) prints:")
     with Capturing() as hailstone_1_output:
         lab.hailstone(1)
     hailstone_1 = ['1']
