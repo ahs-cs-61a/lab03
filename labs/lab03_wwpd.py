@@ -29,7 +29,9 @@ def virfib_sq(n):
         return n
     return (virfib_sq(n - 1) + virfib_sq(n - 2)) ** 2
 
-def virfib_sq2(n): # without print, used to check answers  
+
+# without print, used to check answers  
+def virfib_sq2(n): 
     if n <= 1:
         return n
     return (virfib_sq2(n - 1) + virfib_sq2(n - 2)) ** 2
