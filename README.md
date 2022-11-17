@@ -2,10 +2,10 @@
   
 this assignment will be on recursion and tree recursion
   
-this assignment merges problems from lab03, disc03, and hw03 into one; refer to these links for problem descriptions and requirements:
+this assignment merges problems from disc03, lab03, and hw03 into one; refer to these links for problem descriptions and requirements:
   
-- lab03: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab03/
 - disc03: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc03/
+- lab03: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab03/
 - hw03: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw03/
   
 environment diagrams practice problems: https://docs.google.com/document/d/1ybST4lznR4nkOhE75sRp7hI3YPmnDTAWe_RK_8fMmaw/edit?usp=sharing
