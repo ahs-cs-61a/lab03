@@ -29,4 +29,4 @@ reminders:
 - for all tests: ```python3 -m pytest -s tests/test.py```
 - use [Python Tutor](https://pythontutor.com/composingprograms.html#mode=display) if you are having trouble drawing/figuring out the environment diagrams
 - refer to lab00 setup description for help
-- don't forget to push to GitHub and submit turn-in in GradeScope
+- don't forget to push to GitHub from Codespaces and submit turn-in in GradeScope
