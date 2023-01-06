@@ -1,4 +1,4 @@
-# lab03 - recursion & tree recursion
+# lab03: recursion, tree recursion
 # DO NOT use iteration in solutions
 
 
