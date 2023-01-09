@@ -4,7 +4,6 @@
 
 # disc03: https://inst.eecs.berkeley.edu/~cs61a/su22/disc/disc03/
 
-
 def multiply(m, n): # q1
     """ Takes two positive integers and returns their product using recursion.
     >>> multiply(5, 3)
@@ -59,7 +58,6 @@ def merge(n1, n2): # q4
 
 
 # lab03: https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab03/
-
 
 def summation(n, term): # q5
     """Return the sum of numbers 1 through n (including n) wíth term applied to each number.
@@ -128,7 +126,6 @@ def double_eights(n): # q8
 
 
 # hw03: https://inst.eecs.berkeley.edu/~cs61a/su22/hw/hw03/
-
 
 def num_eights(pos): # q9
     """Returns the number of times 8 appears as a digit of pos.
