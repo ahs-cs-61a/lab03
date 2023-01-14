@@ -28,3 +28,17 @@ reminders:
 - use [Python Tutor](https://pythontutor.com/composingprograms.html#mode=display) if you are having trouble drawing or figuring out the environment diagrams
 - refer to lab00 setup description for help
 - don't forget to push to GitHub from Codespaces and submit turn-in in GradeScope
+  
+test commands:
+  
+- test_multiply
+- test_is_prime
+- test_hailstone
+- test_merge
+- test_summation
+- test_paths
+- test_pascal
+- test_double_eights
+- test_num_eights
+- test_pingpong
+- test_count_coins

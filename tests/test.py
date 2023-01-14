@@ -1,13 +1,21 @@
 # lab03 tests
 
+
+# IMPORTS 
+
 import labs.lab03 as lab
+import tests.wwpd_storage as s
 import re
 import inspect
 from io import StringIO 
 import sys
+import git
+
+st = s.wwpd_storage 
 
 
-# capturing prints (stdout)
+# CAPTURING PRINTS (STDOUT) - https://stackoverflow.com/questions/16571150/how-to-capture-stdout-output-from-a-python-function-call
+
 class Capturing(list):
     def __enter__(self):
         self._stdout = sys.stdout
@@ -19,21 +27,26 @@ class Capturing(list):
         sys.stdout = self._stdout
 
 
-def test_ban_iteration():
-    # converting lab file into string
-    user = input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n")
-    path = "/workspaces/lab03-" + user + "/labs/lab03.py"
-    text_file = open(path, "r")
-    data = text_file.read()
-    text_file.close()
-    search = re.search(r"(while|for).*:{1}", data)
-    assert search is None # iteration detected, please implement using recursion
+# COLORED PRINTS - custom text type to terminal: https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal, ANSI colors: http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
+
+class bcolors:
+    HIGH_MAGENTA = '\u001b[45m'
+    HIGH_GREEN = '\u001b[42m'
+    HIGH_YELLOW = '\u001b[43m'
+    HIGH_RED = '\u001b[41m'
+    HIGH_BLUE = '\u001b[44m'
+    MAGENTA = ' \u001b[35m'
+    GREEN = '\u001b[32m'
+    YELLOW = '\u001b[33m'
+    RED = '\u001b[31m'
+    BLUE = '\u001b[34m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    RESET = '\u001b[0m'
 
 
-def test_ban_assignments():
-    function = inspect.getsource(lab.pingpong)
-    search = re.search(r"[^=]={1}[^=]", function)
-    assert search is None # assignment statement(s) detected in pingpong, please implement without
+# TESTS
 
 
 def test_multiply():
@@ -53,16 +66,18 @@ def test_hailstone():
     with Capturing() as hailstone_10_output:
         lab.hailstone(10)
     hailstone_10 = ['10', '5', '16', '8', '4', '2', '1']
-    for i in range(len(hailstone_10)):
-        assert hailstone_10[i] == hailstone_10_output[i] # incorrect prints
+    if hailstone_10 != hailstone_10_output:
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Incorrect prints from hailstone(10)" + bcolors.ENDC)
+        assert hailstone_10 == hailstone_10_output
     assert lab.hailstone(10) == 7
 
     print("\n\nhailstone(1) prints:")
     with Capturing() as hailstone_1_output:
         lab.hailstone(1)
     hailstone_1 = ['1']
-    for i in range(len(hailstone_1)):
-        assert hailstone_1[i] == hailstone_1_output[i] # incorrect prints
+    if hailstone_1 != hailstone_1_output:
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Incorrect prints from hailstone(1)" + bcolors.ENDC)
+        assert hailstone_1 == hailstone_1_output
     assert lab.hailstone(1) == 1
 
 
@@ -131,3 +146,49 @@ def test_count_coins():
     assert lab.count_coins(20) == 9
     assert lab.count_coins(100) == 242
     assert lab.count_coins(200) == 1463
+
+
+# CHECK WWPD? IS ALL COMPLETE
+
+def test_wwpd():
+    assert len(st) == 22
+
+
+# AUTO-COMMIT WHEN ALL TESTS ARE RAN
+
+user = []
+
+def test_commit():
+    try:
+        # IF CHANGES ARE MADE, COMMIT TO GITHUB
+        user.append(input("\n\nWhat is your GitHub username (exact match, case sensitive)?\n"))
+        repo = git.Repo("/workspaces/lab03-" + user[0])
+        repo.git.add('--all')
+        repo.git.commit('-m', 'update lab')
+        origin = repo.remote(name='origin')
+        origin.push()
+        print(bcolors.HIGH_GREEN + bcolors.BOLD + "\nSUCCESS: Lab complete and changes successfully committed." + bcolors.ENDC)
+    except: 
+        # IF CHANGES ARE NOT MADE, NO COMMITS TO GITHUB
+        print(bcolors.HIGH_MAGENTA + bcolors.BOLD + "\nMESSAGE: Already up to date. No updates committed." + bcolors.ENDC)
+
+
+# ADDITIONAL TEST: BAN ITERATION & ASSIGNMENT STATEMENTS
+
+def test_ban_iteration():
+    path = "/workspaces/lab03-" + user[0] + "/labs/lab03.py"
+    text_file = open(path, "r")
+    data = text_file.read()
+    text_file.close()
+    search = re.search(r"(while|for).*:{1}", data)
+    if search is not None:
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Iteration detected; please implement using recursion only." + bcolors.ENDC)
+    assert search is None
+
+
+def test_ban_assignments():
+    function = inspect.getsource(lab.pingpong)
+    search = re.search(r"[^=]={1}[^=]", function)
+    if search is not None:
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Assignment statement(s) detected in pingpong; implement without using." + bcolors.ENDC)
+    assert search is None 
