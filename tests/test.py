@@ -33,13 +33,6 @@ class bcolors:
     HIGH_MAGENTA = '\u001b[45m'
     HIGH_GREEN = '\u001b[42m'
     HIGH_YELLOW = '\u001b[43m'
-    HIGH_RED = '\u001b[41m'
-    HIGH_BLUE = '\u001b[44m'
-    MAGENTA = ' \u001b[35m'
-    GREEN = '\u001b[32m'
-    YELLOW = '\u001b[33m'
-    RED = '\u001b[31m'
-    BLUE = '\u001b[34m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
@@ -47,7 +40,6 @@ class bcolors:
 
 
 # TESTS
-
 
 def test_multiply():
     assert lab.multiply(5, 3) == 15
@@ -139,6 +131,13 @@ def test_pingpong():
     assert lab.pingpong(82) == 0
     assert lab.pingpong(100) == -6
 
+    # ban assignment statements
+    function = inspect.getsource(lab.pingpong)
+    search = re.search(r"[^=]={1}[^=]", function)
+    if search is not None:
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Assignment statement(s) detected in pingpong; implement without using." + bcolors.ENDC)
+    assert search is None 
+
 
 def test_count_coins():
     assert lab.count_coins(15) == 6
@@ -151,7 +150,10 @@ def test_count_coins():
 # CHECK WWPD? IS ALL COMPLETE
 
 def test_wwpd():
+    if len(st) != 22 or not all([i[4] for i in st]):
+        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: WWPD? incomplete." + bcolors.ENDC)
     assert len(st) == 22
+    assert all([i[4] for i in st])
 
 
 # AUTO-COMMIT WHEN ALL TESTS ARE RAN
@@ -183,12 +185,4 @@ def test_ban_iteration():
     search = re.search(r"(while|for).*:{1}", data)
     if search is not None:
         print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Iteration detected; please implement using recursion only." + bcolors.ENDC)
-    assert search is None
-
-
-def test_ban_assignments():
-    function = inspect.getsource(lab.pingpong)
-    search = re.search(r"[^=]={1}[^=]", function)
-    if search is not None:
-        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Assignment statement(s) detected in pingpong; implement without using." + bcolors.ENDC)
-    assert search is None 
+    assert search is None    

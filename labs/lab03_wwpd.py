@@ -15,13 +15,6 @@ class bcolors:
     HIGH_MAGENTA = '\u001b[45m'
     HIGH_GREEN = '\u001b[42m'
     HIGH_YELLOW = '\u001b[43;1m'
-    HIGH_RED = '\u001b[41m'
-    HIGH_BLUE = '\u001b[44m'
-    MAGENTA = ' \u001b[35m'
-    GREEN = '\u001b[32m'
-    YELLOW = '\u001b[33;1m'
-    RED = '\u001b[31m'
-    BLUE = '\u001b[34m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
@@ -59,40 +52,38 @@ def wwpd(name, question_set, stored_list):
 
     intro(name)
 
-    match_elems1 = [[question_set[i][0], question_set[i][2]] for i in range(len(question_set))]
-    match_elems2 = [[stored_list[i][0], stored_list[i][1]] for i in range(len(stored_list))]
-
-    restart = str(match_elems1)[1:-1] in str(match_elems2) and options() == "restart"
-
+    matched = str([i[:-1] for i in question_set])[1:-1] in str([i[:-1] for i in stored_list])
+    restart = matched and options() == "restart"
     done = False
-    for i in question_set:
-        group = [i[0], i[2], i[3], True]
-        if group not in stored_list or restart:
+
+    for q in question_set:
+        q[4] = True
+        if q not in stored_list or restart:
             done = True 
-            if i[1]:
-                print(i[1])
-            if i[2]:
-                print(i[2])
+            if q[1]:
+                print(q[1])
+            if q[2]:
+                print(q[2])
             guess = input()
-            while guess != i[3]:
+            while guess != q[3]:
                 guess = repeat()
-            if str(match_elems1)[1:] not in str(match_elems2):
+            if not matched:
                 op = open("tests/wwpd_storage.py", "w")
-                if not stored_list:
-                    stored_list = [group]
-                else:
-                    for j in range(len(stored_list)):
-                        if group[0] < stored_list[j][0]:
-                            stored_list.insert(j, group)
-                            break
-                    stored_list.append(group)
+                for j in range(len(stored_list)):
+                    if q[0] < stored_list[j][0]:
+                        stored_list.insert(j, q)
+                        break
+                if q not in stored_list: 
+                    stored_list.append(q)
                 op.write("wwpd_storage = " + str(stored_list))
                 op.close()
     if done:
         complete()
 
 
-# REFERENCE FUNCTIONS
+# REFERENCE FUNCTIONS, CLASSES, METHODS, SEQUENCES, ETC.
+
+# https://inst.eecs.berkeley.edu/~cs61a/su22/lab/lab03/
 
 def virfib_sq(n): # with print
     print(n)
@@ -106,8 +97,8 @@ def virfib_sq2(n): # without print, used to check answers
     return (virfib_sq2(n - 1) + virfib_sq2(n - 2)) ** 2
 
 
-# QUESTION SET - ELEMENT FORMAT: [<INITIAL PRINTS> (usually empty), <QUESTION>, <ANSWER>]
-# INSPECT MODULE - convert function body into String: https://docs.python.org/3/library/inspect.html 
+# QUESTION SET - ELEMENT FORMAT: [<QUESTION NUMBER>, <INITIAL PRINTS> (usually empty), <QUESTION>, <ANSWER>]
+# INSPECT MODULE - convert function/class body into String: https://docs.python.org/3/library/inspect.html 
 # wwpd questions
 
 virfib_sq_qs = [
@@ -135,6 +126,11 @@ virfib_sq_qs = [
     [22, "", ">>> r4", str(virfib_sq2(4))]
 ]
 
+all_qs = [virfib_sq_qs]
+
+for set in all_qs:
+    for q in set:
+        q.append(False)
 
 # WWPD? QUESTIONS
 
