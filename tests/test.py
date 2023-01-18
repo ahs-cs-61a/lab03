@@ -33,10 +33,22 @@ class bcolors:
     HIGH_MAGENTA = '\u001b[45m'
     HIGH_GREEN = '\u001b[42m'
     HIGH_YELLOW = '\u001b[43m'
+    MAGENTA = ' \u001b[35m'
+    GREEN = '\u001b[32m'
+    YELLOW = '\u001b[33;1m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     RESET = '\u001b[0m'
+
+def print_error(message):
+    print("\n" + bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR:" + bcolors.RESET + bcolors.YELLOW + bcolors.BOLD + " " + message + bcolors.ENDC)
+
+def print_message(message):
+    print("\n" + bcolors.HIGH_MAGENTA + bcolors.BOLD + "MESSAGE:" + bcolors.RESET + bcolors.MAGENTA + bcolors.BOLD + " " + message + bcolors.ENDC)
+
+def print_success(message):
+    print("\n" + bcolors.HIGH_GREEN + bcolors.BOLD + "SUCCESS:" + bcolors.RESET + bcolors.GREEN + bcolors.BOLD + " " + message + bcolors.ENDC)
 
 
 # TESTS
@@ -59,8 +71,8 @@ def test_hailstone():
         lab.hailstone(10)
     hailstone_10 = ['10', '5', '16', '8', '4', '2', '1']
     if hailstone_10 != hailstone_10_output:
-        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Incorrect prints from hailstone(10)" + bcolors.ENDC)
-        assert hailstone_10 == hailstone_10_output
+        print_error("Incorrect prints from hailstone(10)")
+    assert hailstone_10 == hailstone_10_output
     assert lab.hailstone(10) == 7
 
     print("\n\nhailstone(1) prints:")
@@ -68,8 +80,8 @@ def test_hailstone():
         lab.hailstone(1)
     hailstone_1 = ['1']
     if hailstone_1 != hailstone_1_output:
-        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Incorrect prints from hailstone(1)" + bcolors.ENDC)
-        assert hailstone_1 == hailstone_1_output
+        print_error("Incorrect prints from hailstone(1)")
+    assert hailstone_1 == hailstone_1_output
     assert lab.hailstone(1) == 1
 
 
@@ -135,7 +147,7 @@ def test_pingpong():
     function = inspect.getsource(lab.pingpong)
     search = re.search(r"[^=]={1}[^=]", function)
     if search is not None:
-        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Assignment statement(s) detected in pingpong; implement without using." + bcolors.ENDC)
+        print_error("Assignment statement(s) detected in pingpong; implement without using.")
     assert search is None 
 
 
@@ -151,7 +163,8 @@ def test_count_coins():
 
 def test_wwpd():
     if len(st) != 22 or not all([i[4] for i in st]):
-        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: WWPD? incomplete." + bcolors.ENDC)
+        print_error("WWPD? is incomplete.")
+        wwpd_complete = False
     assert len(st) == 22
     assert all([i[4] for i in st])
 
@@ -169,13 +182,17 @@ def test_commit():
         repo.git.commit('-m', 'update lab')
         origin = repo.remote(name='origin')
         origin.push()
-        print(bcolors.HIGH_GREEN + bcolors.BOLD + "\nSUCCESS: Lab complete and changes successfully committed." + bcolors.ENDC)
-    except: 
+        print_success("Changes successfully committed.")  
+    except git.GitCommandError: 
         # IF CHANGES ARE NOT MADE, NO COMMITS TO GITHUB
-        print(bcolors.HIGH_MAGENTA + bcolors.BOLD + "\nMESSAGE: Already up to date. No updates committed." + bcolors.ENDC)
+        print_message("Already up to date. No updates committed.")
+    except git.NoSuchPathError:
+        # IF GITHUB USERNAME IS NOT FOUND
+        print_error("Incorrect GitHub username; try again.")
+        raise git.NoSuchPathError("")
 
 
-# ADDITIONAL TEST: BAN ITERATION & ASSIGNMENT STATEMENTS
+# ADDITIONAL TEST: BAN ITERATION
 
 def test_ban_iteration():
     path = "/workspaces/lab03-" + user[0] + "/labs/lab03.py"
@@ -184,5 +201,5 @@ def test_ban_iteration():
     text_file.close()
     search = re.search(r"(while|for).*:{1}", data)
     if search is not None:
-        print(bcolors.HIGH_YELLOW + bcolors.BOLD + "ERROR: Iteration detected; please implement using recursion only." + bcolors.ENDC)
+        print_error("Iteration detected; please implement using recursion only.")
     assert search is None    
