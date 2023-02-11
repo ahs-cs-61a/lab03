@@ -146,8 +146,7 @@ def test_pingpong():
     # ban assignment statements
     function = inspect.getsource(lab.pingpong)
     search = re.search(r"[^=]={1}[^=]", function)
-    if search is not None:
-        print_error("Assignment statement(s) detected in pingpong; implement without using.")
+    print_error("Assignment statement(s) detected in pingpong; implement without using.") if search is not None
     assert search is None 
 
 
@@ -200,6 +199,5 @@ def test_ban_iteration():
     data = text_file.read()
     text_file.close()
     search = re.search(r"(while|for).*:{1}", data)
-    if search is not None:
-        print_error("Iteration detected; please implement using recursion only.")
+    print_error("Iteration detected; please implement using recursion only.") if search is not None
     assert search is None    
