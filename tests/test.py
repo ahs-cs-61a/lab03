@@ -3,13 +3,9 @@
 
 # IMPORTS 
 
-import labs.lab03 as lab
-import tests.wwpd_storage as s
-import re
-import inspect
+import labs.lab03 as lab, tests.wwpd_storage as s
+import re, inspect, sys, git
 from io import StringIO 
-import sys
-import git
 
 st = s.wwpd_storage 
 
@@ -146,7 +142,7 @@ def test_pingpong():
     # ban assignment statements
     function = inspect.getsource(lab.pingpong)
     search = re.search(r"[^=]={1}[^=]", function)
-    print_error("Assignment statement(s) detected in pingpong; implement without using.") if search is not None
+    print_error("Assignment statement(s) detected in pingpong; implement without using.") if search is not None else None
     assert search is None 
 
 
@@ -199,5 +195,5 @@ def test_ban_iteration():
     data = text_file.read()
     text_file.close()
     search = re.search(r"(while|for).*:{1}", data)
-    print_error("Iteration detected; please implement using recursion only.") if search is not None
+    print_error("Iteration detected; please implement using recursion only.") if search is not None else None
     assert search is None    
