@@ -25,7 +25,7 @@ environment diagrams practice problems: https://docs.google.com/document/d/1ybST
 - to run WWPD?: ```wwpd```
 - for individual tests: ```run_test <name of test>```
 - for all tests: ```test_all```
-- if you get an error "bash: command not found," run: ```source backround/.bashrc```
+- if you get an error "bash: command not found," run: ```source .bashrc```
 - use [Python Tutor](https://pythontutor.com/composingprograms.html#mode=display) if you are having trouble drawing or figuring out the environment diagrams
 - refer to lab00 setup description for help
 - don't forget to push to GitHub from Codespaces and submit turn-in in on GradeScope
