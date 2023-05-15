@@ -30,7 +30,7 @@ environment diagrams practice problems: https://docs.google.com/document/d/1ybST
 - refer to lab00 setup description for help
 - don't forget to push to GitHub from Codespaces and submit turn-in in on GradeScope
 
-test commands:
+## test commands:
   
 - multiply
 - is_prime
